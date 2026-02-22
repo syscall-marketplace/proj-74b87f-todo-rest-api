@@ -1,9 +1,8 @@
-import { Express } from 'express';
+import express, { Express } from 'express';
 import { createTodo, getAllTodos, getTodoById, updateTodo, deleteTodo } from '../handlers/todo-handlers.js';
-import { healthCheck } from '../handlers/health-handler.js';
 
 export function setupTodoRoutes(app: Express): void {
-  app.get('/health', healthCheck);
+  app.use(express.json());
 
   app.post('/todos', createTodo);
   app.get('/todos', getAllTodos);
